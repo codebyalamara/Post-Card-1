@@ -213,7 +213,7 @@ function onPostSubmit(eve) {
 }
 
 function onEdit(ele) {
-    updateId = ele.closest('.col-md-3').id
+    updateId = ele.closest('.col-md-8').id
 
     let EDIT_URL = `${BASE_URL}/posts/${updateId}`
 
@@ -284,7 +284,7 @@ function onUpdatePost() {
 
 function onRemove(ele) {
 
-    let REMOVE_ID = ele.closest('.col-md-3').id
+    let REMOVE_ID = ele.closest('.col-md-8').id
 
     Swal.fire({
         title: 'Are you sure?',
