@@ -118,6 +118,20 @@ function onPostSubmit(eve) {
 
     eve.preventDefault()
 
+    if (
+        titleControl.value.trim() === '' ||
+        bodyControl.value.trim() === '' ||
+        userIdControl.value === ''
+    ) {
+        Swal.fire({
+            title: 'All Fields Are Required',
+            text: 'Please fill all the fields before submitting.',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        })
+        return
+    }
+
     // POST_OBJ
 
     let POST_OBJ = {
@@ -156,7 +170,7 @@ function onPostSubmit(eve) {
             // CREATE A SINGLE CARD IN UI
 
             let col = document.createElement('div')
-            col.className = 'col-md-3 mb-3'
+            col.className = 'col-md-8 mb-3'
             col.id = res.id
 
             col.innerHTML = `
@@ -202,6 +216,7 @@ function onPostSubmit(eve) {
         } else {
             // snackbar error
             spinner.classList.add('d-none')
+            snackbar('Something went wrong', 'error')
         }
     }
      // CREATE A NEW CARD ON UI
@@ -209,6 +224,7 @@ function onPostSubmit(eve) {
     xhr.onerror = function () {
         // show snackbar 
         spinner.classList.add('d-none')
+        snackbar('Something went wrong', 'error')
     } 
 }
 
@@ -236,6 +252,20 @@ function onEdit(ele) {
 }
 
 function onUpdatePost() {
+
+    if (
+        titleControl.value.trim() === '' ||
+        bodyControl.value.trim() === '' ||
+        userIdControl.value === ''
+    ) {
+        Swal.fire({
+            title: 'All Fields Are Required',
+            text: 'Please fill all the fields before updating.',
+            icon: 'warning',
+            confirmButtonText: 'OK'
+        })
+        return
+    }
 
     let UPDATE_OBJ = {
         title: titleControl.value,
